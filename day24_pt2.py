@@ -1,0 +1,1 @@
+# This was also done manually with information from part 1 the second part was not very hard
