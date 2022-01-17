@@ -9,8 +9,6 @@ int xLimit = 1500, yLimit = 1500;
 // Sanitised data input for part 1
 // Got the first answer right by getting 754 and 756 and seeing that it was higher than 754 and lower than 756, code doesn't work properly
 // Did some debugging and managed to get it to work properly
-// x 655 y 447 x 327 y 223 x 163 y 111 x 81 y 55 x 40 y 27 y 13 y 6
-// Part 2 sanitised data input
 
 void fold(char plane, int line) {
     if (plane == 'y') {
@@ -30,17 +28,13 @@ void fold(char plane, int line) {
     }
 }
 
-void printAll() {
-    for (int i = 0; i < xLimit; i++) {
-        for (int j = 0; j < yLimit; j++) {
+int countValid() {
+    int out = 0;
+    for (int i = 0; i < xLimit; i++)
+        for (int j = 0; j < yLimit; j++)
             if (grid[i][j])
-                cout << "#";
-            else
-                cout << ".";
-        }
-        cout << "\n";
-    }
-    cout << "\n\n\n";
+                out++;
+    return out;
 }
 
 void solve() {
@@ -51,16 +45,10 @@ void solve() {
         grid[x][y] = 1;
     }
 
-    cout << "\n\n";
+    fold('x',655);
 
-    for (int i = 0; i < 10; i++) {
-        char a;
-        int b;
-        cin >> a >> b;
-        fold(a,b);
-    }
-
-    printAll();
+    int dots = countValid();
+    cout << dots << "\n";
 }
 
 int main() {
